@@ -21,7 +21,7 @@ This may not sound like a lot, but there are a fair amount of moving pieces that
 ## Installation
 
 This project requires no dependencies it is written in vanilla javascript, vanilla css3, and HTML5.
-fork this project to your repo to get started [FEND-landing-page] (https://github.com/Purple19-dev/FEND-landing-page)
+fork this project to your repo to get started <https://github.com/Purple19-dev/FEND-landing-page>
 
 ## Development
 
