@@ -12,8 +12,10 @@ function isInViewport(elem) {
   return (
     bounding.top >= 0 &&
     bounding.left >= 0 &&
-    bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-    bounding.right <= (window.innerWidth || document.documentElement.clientWidth)
+    bounding.bottom <=
+      (window.innerHeight || document.documentElement.clientHeight) &&
+    bounding.right <=
+      (window.innerWidth || document.documentElement.clientWidth)
   );
 }
 
@@ -43,8 +45,14 @@ function setActive() {
   for (let section of sections) {
     if (isInViewport(section)) {
       section.classList.add("your-active-class");
+      document
+        .querySelector(`a[href='#${section.id}']`)
+        .classList.add("active");
     } else {
       section.classList.remove("your-active-class");
+      document
+        .querySelector(`a[href='#${section.id}']`)
+        .classList.remove("active");
     }
   }
 }
