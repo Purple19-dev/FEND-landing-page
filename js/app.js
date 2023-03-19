@@ -9,13 +9,19 @@ const sections = document.querySelectorAll("section");
  */
 function isInViewport(elem) {
   const bounding = elem.getBoundingClientRect();
+  const mq = window.matchMedia("(max-width: 767px)");
+  const viewportHeight = mq.matches
+    ? window.screen.height
+    : window.innerHeight || document.documentElement.clientHeight;
+  const viewportWidth = mq.matches
+    ? window.screen.width
+    : window.innerWidth || document.documentElement.clientWidth;
+
   return (
     bounding.top >= 0 &&
     bounding.left >= 0 &&
-    bounding.bottom <=
-      (window.innerHeight || document.documentElement.clientHeight) &&
-    bounding.right <=
-      (window.innerWidth || document.documentElement.clientWidth)
+    bounding.bottom <= viewportHeight &&
+    bounding.right <= viewportWidth
   );
 }
 
@@ -43,16 +49,13 @@ function buildNav() {
 
 function setActive() {
   for (let section of sections) {
+    const activeNav = document.querySelector(`a[href='#${section.id}']`);
     if (isInViewport(section)) {
       section.classList.add("your-active-class");
-      document
-        .querySelector(`a[href='#${section.id}']`)
-        .classList.add("active");
+      activeNav.classList.add("active");
     } else {
       section.classList.remove("your-active-class");
-      document
-        .querySelector(`a[href='#${section.id}']`)
-        .classList.remove("active");
+      activeNav.classList.remove("active");
     }
   }
 }
